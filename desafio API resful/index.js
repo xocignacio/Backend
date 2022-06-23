@@ -43,6 +43,24 @@ app.get('/api/productos',(req, res)=> {
     }
    })
 
+   
+app.delete("/api/productos/:id", (req, res)=>{
+    res.json({
+      result: 'obtuve una query',
+      id: req.params.id,
+    })
+  })
+  
+  app.put("/api/productos/:id", (req, res)=>{
+    let productoID = parseInt(req.params.id);
+    let producto = req.body;
+    let productoEncontrado = productosID.find(producto => producto.id === productoID);
+   
+    productoEncontrado.title = producto.title;
+    productoEncontrado.price = producto.price;
+    
+    res.json({producto: productoEncontrado})
+  })
 
 
    const PORT  = 8080;
