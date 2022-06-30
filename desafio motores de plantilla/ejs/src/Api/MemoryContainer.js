@@ -5,14 +5,12 @@ class ContainerMemoria {
   
     getAll() {
       return this.elements;
-    }
-  
+    }  
     getById(id) {
       const element = this.elements.find((e) => e.id == id);
   
       return element;
-    }
-  
+    }  
     save(element) {
       element.id =
         this.elements.length === 0
@@ -22,8 +20,7 @@ class ContainerMemoria {
       this.elements.push(element);
   
       return element;
-    }
-  
+    }  
     updateById(id, newData) {
       const elementIndex = this.elements.findIndex((e) => e.id == id);
   
@@ -35,8 +32,7 @@ class ContainerMemoria {
       };
   
       return this.elements[elementIndex];
-    }
-  
+    }  
     deleteById(id) {
       const elementIndex = this.elements.findIndex((e) => e.id == id);
   
