@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cliente Websockets</h1>
+    <form onsubmit="return addMessage(this)">                   <!-- no tiene un action, ya que eso provoca que se recargue la pag (MUY IMPORTANTE), por eso usamos onsubmit que llama a la funcion addMessage -->
+      <input type="text" id="username" placeholder="Tu Nombre" />
+      <input type="text" id="texto" placeholder="Cuéntanos algo..." />
+      <input type="submit" value="Enviar" />
+    </form>
+
+    <div id="mensajes"></div>
+    <script src="public/main.js"></script>
+
+</body>
+</html>
