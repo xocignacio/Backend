@@ -1,2 +1,1 @@
-# Desafio 8 api resful, utilizando metodos en ContainerMemory y diferentes rutas.
-http://localhost:8080/api/productos
+En este repositorio, practico y desarrollo los diferentes desafios de la cursada de programacion backend en Coderhouse
