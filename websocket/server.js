@@ -1,4 +1,4 @@
-const express = require("express");
+/* const express = require("express");
 const { Server: HttpServer } = require("http");
 const { Server: IOServer } = require("socket.io");
 
@@ -8,57 +8,28 @@ const io = new IOServer(httpServer);
 
 app.use(express.static("public"));
 
-const mensajes = [
-  { author: "Juan", text: "¡Hola! ¿Que tal?" },
-  { author: "Pedro", text: "¡Muy bien! ¿Y vos?" },
-  { author: "Ana", text: "¡Genial!" }
-];
+let mensajes = [];
 
-io.on("connection", (socket) => {                    /*  connection siempre esta como primer parametro, indica la coneccion por primera vez (handshake) */
-  console.log("Nuevo cliente conectado!");
+io.on("connection", (socket) => {
+  console.log(`Nuevo cliente conectado ${socket.id}`);
 
-  /* Envio los mensajes al cliente que se conectó */
   socket.emit("mensajes", mensajes);
 
-  socket.on('nuevoMensaje', mensaje =>{
-    mensajes.push(mensaje);
-    io.sockets.emit('mensajes', mensajes);         //// sockets es para enviar para todos  /// mensajes es el array que consiste
-  })
-  
-});
+  socket.on("mensajeNuevo", (data) => {
+    mensajes.push(data);
 
-const PORT = 8080 || process.env.PORT;
-const connectedServer = httpServer.listen(PORT, function () {
-  console.log(
-    `Servidor Http con Websockets escuchando en el puerto ${
-      connectedServer.address().port
-    }`
-  );
-});
-connectedServer.on("error", (error) =>
-  console.log(`Error en servidor ${error}`)
-);
-
-
-
-/* httpServer.listen(3000, () => console.log('listening on port 3000'));    /// arranco el server con httpserver
-
-//////// prendo socket ///// 
-io.on("connection", (socket) => {                ///llamo al io que esta en linea 7  /// connection siempre esta como primer parametro, indica la coneccion por primera vez (handshake)
-    console.log("Nuevo cliente conectado!");
-  
-    /* Envio los mensajes al cliente que se conectó 
-    socket.emit('mensajes', mensajes);         //// mensajes es el identificador (nombre de nuestro evento), tiene que estar tanto del lado del servidor y el cliente. El segundo parametro (informacion que queremos transmitir)
-  /* 
-    socket.on('nuevoMensaje', mensaje =>{
-      mensajes.push(mensaje);
-      io.sockets.emit('mensajes', mensajes);
-    }) 
-    
-    socket.on ('mensaje', data => {                 
-        io.sockets.emit ("mensajes", data);   //data viene del front       /// mando a todos los clientes la data que me entra por el input
-    })
-
+    io.sockets.emit("mensajes", mensajes);
   });
+  socket.on("borrarMensajes", (autor) => {
+    mensajes = mensajes.filter((m) => m.autor != autor);
+    io.sockets.emit("mensajes", mensajes);
+  });
+});
 
- */
+const PORT = 8080;
+const server = httpServer.listen(PORT, () => {
+  console.log(`Servidor escuchando en puerto ${PORT}`);
+});
+server.on("error", (error) => {
+  console.error(`Error en el servidor ${error}`);
+}); */
