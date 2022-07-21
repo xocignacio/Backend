@@ -1,2 +1,6 @@
-# Desafio 8 api resful, utilizando metodos en ContainerMemory y diferentes rutas.
-http://localhost:8080/api/productos
+#  ✨Programacion backend ✨
+En este repositorio encontraras diferentes codigos en los cuales practico los diferentes desafios del curso
+## Desafios  Coderhouse
+- Motores de plantillas (ejs, pug y hbs) 
+-   WebSockets (chats)
+-   Api resful
